@@ -32,7 +32,7 @@ public class PrivateFilter implements Filter {
 			User user = (User) session.getAttribute(SessionKey.USER);
 			if (user == null) {
 				RequestDispatcher dispatcher = req
-						.getRequestDispatcher("/login.jsp");
+						.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 
 				dispatcher.forward(req, resp);
 				return;
