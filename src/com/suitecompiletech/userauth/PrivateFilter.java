@@ -27,8 +27,7 @@ public class PrivateFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) servletrequest;
 		HttpServletResponse resp = (HttpServletResponse) servletresponse;
 		HttpSession session = req.getSession();
-		System.out.println("HERE");
-		if (req.getRequestURI().startsWith("/private")) {
+		if (req.getRequestURI().startsWith("/private/")) {
 			User user = (User) session.getAttribute(SessionKey.USER);
 			if (user == null) {
 				RequestDispatcher dispatcher = req
@@ -37,7 +36,7 @@ public class PrivateFilter implements Filter {
 				dispatcher.forward(req, resp);
 				return;
 			} else {
-				String newURL = req.getRequestURI().replace("/private", "/WEB-INF/private");
+				String newURL = req.getRequestURI().replace("/private/", "/WEB-INF/private/");
 				RequestDispatcher dispatcher = req
 						.getRequestDispatcher(newURL);
 

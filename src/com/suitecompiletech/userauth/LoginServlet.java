@@ -27,9 +27,7 @@ public class LoginServlet extends HttpServlet {
 			User user = new User();
 			user.setUsername(username);
 			request.getSession().setAttribute(SessionKey.USER, user);
-			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("/WEB-INF/private/index.html");
-			dispatcher.forward(request, response);
+			response.sendRedirect("/private/");
 		} else {
 			request.getSession().setAttribute(SessionKey.LASTERROR, "Invalid credentials");
 			RequestDispatcher dispatcher = request
