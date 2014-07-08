@@ -1,13 +1,15 @@
 package com.suitecompiletech.userauth;
 
-public class User {
-	private String userName;
+import java.io.Serializable;
 
-	public String getUserName() {
-		return userName;
+public class User implements Serializable{
+	private String username;
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

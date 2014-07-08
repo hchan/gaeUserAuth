@@ -3,7 +3,13 @@
 
 <body style="background-color: #cccccc">
 	<h1>Taming the Elements - Login</h1>
-
+	<div style="color: red">
+	<%
+	if (session.getAttribute("lastError") != null) {
+		out.println(session.getAttribute("lastError"));
+	}
+	%>
+	</div>
 
 	<form method="post" action="/login">
 		<fieldset style="width: 250px; padding: 5px">

@@ -37,7 +37,11 @@ public class PrivateFilter implements Filter {
 				dispatcher.forward(req, resp);
 				return;
 			} else {
-				filterchain.doFilter(servletrequest, servletresponse);
+				String newURL = req.getRequestURI().replace("/private", "/WEB-INF/private");
+				RequestDispatcher dispatcher = req
+						.getRequestDispatcher(newURL);
+
+				dispatcher.forward(req, resp);
 			}
 		} else {
 			filterchain.doFilter(servletrequest, servletresponse);
