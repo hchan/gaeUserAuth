@@ -7,7 +7,8 @@ import javax.servlet.http.*;
 
 // Extend HttpServlet class
 public class LoginServlet extends HttpServlet {
-
+	public static GaeUserConfiguration cfg = new GaeUserConfiguration();
+	
 	public void init() throws ServletException {
 
 	}
@@ -15,7 +16,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
+		
 		request.getSession().removeAttribute(SessionKey.LASTERROR);
 		
 		String username = "";
@@ -23,7 +24,7 @@ public class LoginServlet extends HttpServlet {
 		username = request.getParameter("username");
 		password = request.getParameter("password");
 
-		if (username.equals("beta") && password.equals("ray bill")) {
+		if (cfg.get(username) != null && password.equals(cfg.get(username))) {
 			User user = new User();
 			user.setUsername(username);
 			request.getSession().setAttribute(SessionKey.USER, user);
